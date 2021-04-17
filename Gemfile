@@ -1,11 +1,13 @@
 source 'https://rubygems.org'
 
-gem 'sinatra'
-
 group :test do
+  gem 'sinatra'
   gem 'capybara'
+  gem 'sinatra-reloader'
   gem 'rspec'
   gem 'rubocop', '0.79.0'
   gem 'simplecov', require: false
   gem 'simplecov-console', require: false
 end
+
+# put gem 'sinatra-reloader' and then bundle if it can't find the file.
