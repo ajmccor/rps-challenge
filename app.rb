@@ -2,12 +2,23 @@ require 'sinatra/base'
 require 'sinatra/reloader'
 
 class RockPaperScissors < Sinatra::Base
+  enable :sessions
   configure :development do
     register Sinatra::Reloader
   end
 
   get '/' do
-    'Testing'
+    erb :index
+  end
+
+  post '/name' do
+    session[:player_name] = params[:player_name]
+    redirect '/play'
+  end
+
+  get '/play' do
+    @player_name = session[:player_name]
+    erb :play
   end
 
   # start the server if ruby file executed directly
