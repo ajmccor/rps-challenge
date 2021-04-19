@@ -4,16 +4,10 @@ Please choose between rock paper or scissors:
 <br>
 <br>
 <br>
-<form action="/choice">
-  <input type="submit" value="Rock">
-</form>
-
-<br><br>
-<form action="/choice">
-  <input type="submit" value="Paper">
-</form>
-
-<br><br>
-<form action="/choice">
-  <input type="submit" value="Scissors">
-</form>
+<form action="/choice" method="post">
+  <label for="player_choice">
+    Please type rock, paper or scissors:
+    <input type="text" name="player_choice">
+  </label>
+  <input type="submit" value="Submit">
+<form/>

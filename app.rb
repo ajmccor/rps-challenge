@@ -1,5 +1,6 @@
 require 'sinatra/base'
 require 'sinatra/reloader'
+require_relative 'lib/game'
 
 class RockPaperScissors < Sinatra::Base
   enable :sessions
@@ -21,8 +22,15 @@ class RockPaperScissors < Sinatra::Base
     erb :play
   end
 
-  get '/choice' do
+  post '/choice' do
+    @player_choice = params[:player_choice]
+    $game = Game.new(params[:player_choice])
+    redirect '/game'
+  end
 
+  get '/game' do
+    @result = $game.run_game
+    erb :game
   end
 
   # start the server if ruby file executed directly
